@@ -18,7 +18,8 @@ function genCode() { return Math.random().toString(36).slice(2, 8).toUpperCase()
 
 const THEMES = {
   dark: { A: "#e8a598", DARK: "#070510", SURF: "#0e0b1a", CARD: "#140f24", BDR: "#221b35", GOLD: "#d4a847" },
-  romantic: { A: "#d4a8b5", DARK: "#1a0f14", SURF: "#2a1a22", CARD: "#3a2530", BDR: "#5a3f4a", GOLD: "#e8c4a8" }
+  romantic: { A: "#d4a8b5", DARK: "#1a0f14", SURF: "#2a1a22", CARD: "#3a2530", BDR: "#5a3f4a", GOLD: "#e8c4a8" },
+  man: { A: "#a8b5d4", DARK: "#0f141a", SURF: "#1a222a", CARD: "#25303a", BDR: "#3f4a5a", GOLD: "#d4c4a8" }  // Deep teal/blue, charcoal, warm gold
 };
 
 const DDATES = ["Sunset picnic","Cook a new recipe together","Star gazing","Dance class","Museum visit","Morning hike","Wine & paint night","Midnight drive","Farmers market","Board game night","Road trip","Spa day at home","Watch the sunrise","Pottery class","Karaoke night","Bookstore date","Drive-in movie","Escape room","Concert","Breakfast in bed","Botanical garden","Kayaking"];
@@ -32,7 +33,7 @@ const TOPICS = [
 ];
 
 export default function Us() {
-  const [theme, setTheme] = useState("dark");
+  const [theme, setTheme] = useState("man"); // Default to man theme
   const colors = THEMES[theme];
 
   const [phase, setPhase] = useState("loading");
@@ -150,7 +151,7 @@ export default function Us() {
       <div style={{padding:"14px 16px",background:colors.SURF,borderBottom:`1px solid ${colors.BDR}`,position:"sticky",top:0,zIndex:10,display:"flex",justifyContent:"space-between",alignItems:"center",transition:"all 0.4s"}}>
         <div style={{fontSize:28,fontWeight:700,color:colors.A,transition:"color 0.4s"}}>us.</div>
         <div style={{display:"flex",gap:12,alignItems:"center"}}>
-          <button onClick={()=>setTheme(theme==="dark"?"romantic":"dark")} style={{background:"none",border:"none",fontSize:22,cursor:"pointer"}}>🌙</button>
+          <button onClick={()=>setTheme(theme==="dark" ? "romantic" : theme==="romantic" ? "man" : "dark")} style={{background:"none",border:"none",fontSize:22,cursor:"pointer"}}>🌙</button>
           <div style={{fontSize:14}}>{me && `Code: ${me.code}`}</div>
         </div>
       </div>
@@ -161,7 +162,7 @@ export default function Us() {
         {phase === "onboard" && (
           <div style={{maxWidth:420,margin:"60px auto",textAlign:"center",animation:"fadeUp 0.6s ease"}}>
             <div style={{fontSize:80,color:colors.A,transition:"color 0.4s"}}>us.</div>
-            <p style={{fontSize:20,marginBottom:8}}>Deep connection.<br/>Fun dates.<br/>Lasting love.</p>
+            <p style={{fontSize:20,marginBottom:8}}>Strong connection.<br/>Real talks.<br/>Lasting love.</p>
             <input value={nameIn} onChange={e=>setNameIn(e.target.value)} placeholder="Your name" style={{width:"100%",padding:18,background:colors.CARD,border:`1px solid ${colors.BDR}`,borderRadius:16,marginBottom:16,transition:"all 0.3s"}} />
             <button onClick={createCouple} style={{width:"100%",padding:18,background:colors.A,color:"#070510",border:"none",borderRadius:16,fontWeight:700,marginBottom:12,transition:"all 0.3s"}}>Create Couple</button>
             <button onClick={()=>setCodeIn(codeIn?"":" ")} style={{width:"100%",padding:18,background:colors.CARD,border:`1px solid ${colors.BDR}`,borderRadius:16,transition:"all 0.3s"}}>Join with Code</button>

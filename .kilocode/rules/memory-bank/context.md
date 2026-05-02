@@ -27,9 +27,9 @@ The template is a clean Next.js 16 starter with TypeScript and Tailwind CSS 4. I
 
 ## Current Focus
 
-Successfully deployed "us." couples app with THEME SWITCHER + Real Percentage Scoring + Smooth Animations!
+Successfully deployed "us." couples app with THEME SWITCHER (3 Themes) + Real Percentage Scoring + Smooth Animations!
 
-- **Theme Switcher**: 🌙 Dark theme ↔ 💖 Romantic theme with custom color palettes and smooth transitions
+- **Theme Switcher**: 🌙 Dark ↔ 💖 Romantic ↔ 🧔 Man (deep teal/blue, charcoal, warm gold) with custom color palettes and smooth transitions
 - **Real Percentage Scoring**: Automatic compatibility calculation ("You matched 78%!")
 - **Smooth Animations**: Fade-in animations for all screens and components with CSS keyframes
 - **Premium UX**: Personalized visual experience for couples with hover effects and transitions
@@ -102,3 +102,4 @@ export async function GET() {
 | 2026-05-02 | Deployed REAL PERCENTAGE SCORING: Automatic compatibility calculation when couples complete same quiz, shows "You matched X% with your partner!" |
 | 2026-05-02 | Added THEME SWITCHER: 🌙 Dark theme ↔ 💖 Romantic theme with custom color palettes for personalized couple experience
 | 2026-05-02 | Implemented smooth animations and transitions throughout the app with fadeUp keyframes and hover effects
+| 2026-05-02 | Added masculine "man" theme with deep teal/blue, charcoal, warm gold colors, updated tagline to "Strong connection. Real talks. Lasting love."

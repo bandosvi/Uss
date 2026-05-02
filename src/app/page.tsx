@@ -143,145 +143,39 @@ export default function Us() {
   return (
     <div style={{minHeight:"100vh",background:colors.DARK,color:"#f0e8f0",fontFamily:"system-ui",display:"flex",flexDirection:"column"}}>
       {phase === "landing" && (
-        <div style={{flex:1,display:"flex",flexDirection:"column",justifyContent:"center",alignItems:"center",textAlign:"center",padding:"20px",background:"linear-gradient(135deg, #0f141a 0%, #1a222a 50%, #25303a 100%)",position:"relative",overflow:"hidden"}}>
-          {/* Falling Hearts Animation */}
-          <div style={{position:"absolute",top:0,left:0,right:0,bottom:0,pointerEvents:"none",zIndex:1}}>
-            {[...Array(8)].map((_,i) => (
-              <div key={i} style={{
-                position:"absolute",
-                left:`${Math.random()*100}%`,
-                top:`${Math.random()*100}%`,
-                fontSize:`${20+Math.random()*20}px`,
-                animation:`fall ${3+Math.random()*4}s linear infinite`,
-                animationDelay:`${Math.random()*2}s`,
-                color:"#ff6b9d",
-                opacity:0.6
-              }}>💖</div>
-            ))}
-          </div>
+        <div style={{flex:1,display:"flex",flexDirection:"column",justifyContent:"center",alignItems:"center",textAlign:"center",padding:"40px 20px",background:"linear-gradient(180deg, #0f141a 0%, #1a222a 100%)"}}>
+          {/* Simple Logo */}
+          <div style={{fontSize:92,color:colors.A,fontWeight:700,marginBottom:20}}>us.</div>
 
-          {/* Animated Logo */}
-          <div style={{position:"relative",zIndex:2,marginBottom:40}}>
-            <div style={{
-              fontSize:120,
-              fontWeight:900,
-              background:"linear-gradient(45deg, #a8b5d4, #d4c4a8, #ff6b9d)",
-              backgroundClip:"text",
-              WebkitBackgroundClip:"text",
-              color:"transparent",
-              textShadow:"0 0 30px rgba(168,181,212,0.5)",
-              animation:"glow 2s ease-in-out infinite alternate",
-              fontFamily:"'Impact', 'Arial Black', sans-serif",
-              letterSpacing:"8px",
-              transform:"rotate(-5deg)"
-            }}>us.</div>
-            <div style={{
-              position:"absolute",
-              top:"50%",
-              left:"50%",
-              transform:"translate(-50%, -50%)",
-              fontSize:12,
-              color:"#ff6b9d",
-              fontWeight:700,
-              textTransform:"uppercase",
-              letterSpacing:"2px",
-              opacity:0.8
-            }}>premium</div>
-          </div>
+          <p style={{fontSize:26,marginBottom:8,lineHeight:1.2}}>Strong connection.<br/>Real talks.<br/>Lasting love.</p>
+          <p style={{fontSize:18,opacity:0.8,maxWidth:320,marginBottom:40}}>The app built for men who want deeper relationships.</p>
 
-          {/* Before/After Problem-Solution Showcase */}
-          <div style={{display:"grid",gap:20,width:"100%",maxWidth:400,marginBottom:40,zIndex:2}}>
-            {/* Problem 1 */}
-            <div style={{
-              background:"linear-gradient(135deg, #ff4757, #ff3838)",
-              padding:20,
-              borderRadius:20,
-              border:"2px solid #ff6b9d",
-              boxShadow:"0 8px 32px rgba(255,71,87,0.3)",
-              animation:"pulseRed 3s ease-in-out infinite"
-            }}>
-              <div style={{fontSize:16,fontWeight:600,color:"white",marginBottom:8}}>❌ Surface conversations</div>
-              <div style={{fontSize:14,color:"white",opacity:0.9}}>Small talk that goes nowhere</div>
-              <div style={{marginTop:12,fontSize:20,color:"white"}}>→</div>
-              <div style={{fontSize:16,fontWeight:600,color:"white",marginTop:8}}>✅ Deep, meaningful talks</div>
-              <div style={{fontSize:14,color:"white",opacity:0.9}}>Questions that reveal who she really is</div>
+          {/* Simplified Problem-Solution Showcase */}
+          <div style={{display:"grid",gap:16,width:"100%",maxWidth:360,marginBottom:40}}>
+            <div style={{background:colors.CARD,padding:20,borderRadius:16,border:`1px solid ${colors.BDR}`}}>
+              <div style={{fontSize:16,fontWeight:600,color:"#f0e8f0",marginBottom:8}}>❌ Surface conversations</div>
+              <div style={{fontSize:14,color:"#f0e8f0",opacity:0.8,marginBottom:12}}>Small talk that goes nowhere</div>
+              <div style={{fontSize:16,fontWeight:600,color:colors.A}}>✅ Deep, meaningful talks</div>
+              <div style={{fontSize:14,color:"#f0e8f0",opacity:0.8}}>Questions that reveal who she really is</div>
             </div>
 
-            {/* Problem 2 */}
-            <div style={{
-              background:"linear-gradient(135deg, #ffa726, #ff9800)",
-              padding:20,
-              borderRadius:20,
-              border:"2px solid #ffd54f",
-              boxShadow:"0 8px 32px rgba(255,167,38,0.3)",
-              animation:"pulseOrange 3s ease-in-out infinite 0.5s"
-            }}>
-              <div style={{fontSize:16,fontWeight:600,color:"white",marginBottom:8}}>❌ Awkward date planning</div>
-              <div style={{fontSize:14,color:"white",opacity:0.9}}>"What do you want to do?"</div>
-              <div style={{marginTop:12,fontSize:20,color:"white"}}>→</div>
-              <div style={{fontSize:16,fontWeight:600,color:"white",marginTop:8}}>✅ Fun, competitive games</div>
-              <div style={{fontSize:14,color:"white",opacity:0.9}}>Coin toss decisions & date wheel spins</div>
+            <div style={{background:colors.CARD,padding:20,borderRadius:16,border:`1px solid ${colors.BDR}`}}>
+              <div style={{fontSize:16,fontWeight:600,color:"#f0e8f0",marginBottom:8}}>❌ Awkward date planning</div>
+              <div style={{fontSize:14,color:"#f0e8f0",opacity:0.8,marginBottom:12}}>"What do you want to do?"</div>
+              <div style={{fontSize:16,fontWeight:600,color:colors.A}}>✅ Fun, competitive games</div>
+              <div style={{fontSize:14,color:"#f0e8f0",opacity:0.8}}>Coin toss decisions & date wheel spins</div>
             </div>
 
-            {/* Problem 3 */}
-            <div style={{
-              background:"linear-gradient(135deg, #42a5f5, #2196f3)",
-              padding:20,
-              borderRadius:20,
-              border:"2px solid #64b5f6",
-              boxShadow:"0 8px 32px rgba(66,165,245,0.3)",
-              animation:"pulseBlue 3s ease-in-out infinite 1s"
-            }}>
-              <div style={{fontSize:16,fontWeight:600,color:"white",marginBottom:8}}>❌ Forgetting important moments</div>
-              <div style={{fontSize:14,color:"white",opacity:0.9}}>Special dates slip away</div>
-              <div style={{marginTop:12,fontSize:20,color:"white"}}>→</div>
-              <div style={{fontSize:16,fontWeight:600,color:"white",marginTop:8}}>✅ Cherished memories</div>
-              <div style={{fontSize:14,color:"white",opacity:0.9}}>Photo albums & relationship milestones</div>
+            <div style={{background:colors.CARD,padding:20,borderRadius:16,border:`1px solid ${colors.BDR}`}}>
+              <div style={{fontSize:16,fontWeight:600,color:"#f0e8f0",marginBottom:8}}>❌ Forgetting important moments</div>
+              <div style={{fontSize:14,color:"#f0e8f0",opacity:0.8,marginBottom:12}}>Special dates slip away</div>
+              <div style={{fontSize:16,fontWeight:600,color:colors.A}}>✅ Cherished memories</div>
+              <div style={{fontSize:14,color:"#f0e8f0",opacity:0.8}}>Photo albums & relationship milestones</div>
             </div>
           </div>
 
-          {/* Theme Switcher Preview */}
-          <div style={{marginBottom:40,zIndex:2}}>
-            <div style={{fontSize:16,color:"#f0e8f0",marginBottom:16}}>🎨 Multiple themes included</div>
-            <div style={{display:"flex",gap:12,justifyContent:"center"}}>
-              <div style={{
-                width:40,
-                height:40,
-                borderRadius:"50%",
-                background:"linear-gradient(45deg, #a8b5d4, #d4c4a8)",
-                cursor:"pointer",
-                border:"3px solid #f0e8f0",
-                animation:"bounce 2s ease-in-out infinite"
-              }}></div>
-              <div style={{
-                width:40,
-                height:40,
-                borderRadius:"50%",
-                background:"linear-gradient(45deg, #ff6b9d, #ffd54f)",
-                cursor:"pointer",
-                border:"3px solid #f0e8f0",
-                animation:"bounce 2s ease-in-out infinite 0.3s"
-              }}></div>
-            </div>
-          </div>
-
-          {/* CTA Button */}
-          <button onClick={()=>setPhase("onboard")} style={{
-            width:"100%",
-            maxWidth:360,
-            padding:20,
-            background:"linear-gradient(45deg, #a8b5d4, #d4c4a8)",
-            color:"#070510",
-            border:"none",
-            borderRadius:20,
-            fontWeight:700,
-            fontSize:19,
-            boxShadow:"0 8px 32px rgba(168,181,212,0.4)",
-            animation:"glow 2s ease-in-out infinite alternate",
-            zIndex:2
-          }}>Start Our Journey</button>
-
-          <p style={{marginTop:20,fontSize:14,color:"#f0e8f0",opacity:0.7,zIndex:2}}>Join thousands of men building stronger relationships</p>
+          <button onClick={()=>setPhase("onboard")} style={{width:"100%",maxWidth:360,padding:20,background:colors.A,color:colors.DARK,border:"none",borderRadius:20,fontWeight:700,fontSize:19}}>Start Our Journey</button>
+          <p style={{marginTop:30,fontSize:14,opacity:0.6}}>Private • Secure • Built for real couples</p>
         </div>
       )}
 
@@ -372,41 +266,7 @@ export default function Us() {
         </>
       )}
 
-      {/* Premium Animations */}
       <style>{`
-        @keyframes fall {
-          0% { transform: translateY(-100px) rotate(0deg); opacity: 0; }
-          10% { opacity: 1; }
-          90% { opacity: 1; }
-          100% { transform: translateY(100vh) rotate(360deg); opacity: 0; }
-        }
-
-        @keyframes glow {
-          0% { text-shadow: 0 0 30px rgba(168,181,212,0.5), 0 0 60px rgba(168,181,212,0.3); }
-          100% { text-shadow: 0 0 40px rgba(168,181,212,0.8), 0 0 80px rgba(168,181,212,0.5); }
-        }
-
-        @keyframes pulseRed {
-          0%, 100% { transform: scale(1); box-shadow: 0 8px 32px rgba(255,71,87,0.3); }
-          50% { transform: scale(1.02); box-shadow: 0 12px 40px rgba(255,71,87,0.5); }
-        }
-
-        @keyframes pulseOrange {
-          0%, 100% { transform: scale(1); box-shadow: 0 8px 32px rgba(255,167,38,0.3); }
-          50% { transform: scale(1.02); box-shadow: 0 12px 40px rgba(255,167,38,0.5); }
-        }
-
-        @keyframes pulseBlue {
-          0%, 100% { transform: scale(1); box-shadow: 0 8px 32px rgba(66,165,245,0.3); }
-          50% { transform: scale(1.02); box-shadow: 0 12px 40px rgba(66,165,245,0.5); }
-        }
-
-        @keyframes bounce {
-          0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
-          40% { transform: translateY(-10px); }
-          60% { transform: translateY(-5px); }
-        }
-
         @keyframes fadeUp {
           from { opacity: 0; transform: translateY(30px); }
           to { opacity: 1; transform: translateY(0); }

@@ -1,5 +1,5 @@
 // @ts-nocheck
-// us-premium-animations.js - Smooth Transitions + All Features
+// us-premium-landing-man-theme.js - Strong Landing + Man Theme + All Features
 "use client";
 import { useState, useEffect } from "react";
 
@@ -18,9 +18,7 @@ function uid() { return Math.random().toString(36).slice(2, 11); }
 function genCode() { return Math.random().toString(36).slice(2, 8).toUpperCase(); }
 
 const THEMES = {
-  dark: { A: "#e8a598", DARK: "#070510", SURF: "#0e0b1a", CARD: "#140f24", BDR: "#221b35", GOLD: "#d4a847" },
-  romantic: { A: "#d4a8b5", DARK: "#1a0f14", SURF: "#2a1a22", CARD: "#3a2530", BDR: "#5a3f4a", GOLD: "#e8c4a8" },
-  man: { A: "#a8b5d4", DARK: "#0f141a", SURF: "#1a222a", CARD: "#25303a", BDR: "#3f4a5a", GOLD: "#d4c4a8" }  // Deep teal/blue, charcoal, warm gold
+  man: { A: "#a8b5d4", DARK: "#0f141a", SURF: "#1a222a", CARD: "#25303a", BDR: "#3f4a5a", GOLD: "#d4c4a8" }
 };
 
 const DDATES = ["Sunset picnic","Cook a new recipe together","Star gazing","Dance class","Museum visit","Morning hike","Wine & paint night","Midnight drive","Farmers market","Board game night","Road trip","Spa day at home","Watch the sunrise","Pottery class","Karaoke night","Bookstore date","Drive-in movie","Escape room","Concert","Breakfast in bed","Botanical garden","Kayaking"];
@@ -34,10 +32,9 @@ const TOPICS = [
 ];
 
 export default function Us() {
-  const [theme, setTheme] = useState("man"); // Default to man theme
-  const colors = THEMES[theme];
+  const colors = THEMES.man; // Man theme default
 
-  const [phase, setPhase] = useState("loading");
+  const [phase, setPhase] = useState("landing");
   const [me, setMe] = useState(null);
   const [couple, setCouple] = useState(null);
   const [nav, setNav] = useState("home");
@@ -148,18 +145,33 @@ export default function Us() {
   };
 
   return (
-    <div style={{minHeight:"100vh",background:colors.DARK,color:"#f0e8f0",fontFamily:"system-ui",display:"flex",flexDirection:"column",transition:"background 0.4s"}}>
-      <div style={{padding:"14px 16px",background:colors.SURF,borderBottom:`1px solid ${colors.BDR}`,position:"sticky",top:0,zIndex:10,display:"flex",justifyContent:"space-between",alignItems:"center",transition:"all 0.4s"}}>
-        <div style={{fontSize:28,fontWeight:700,color:colors.A,transition:"color 0.4s"}}>us.</div>
-        <div style={{display:"flex",gap:12,alignItems:"center"}}>
-          <button onClick={()=>setTheme(theme==="dark" ? "romantic" : theme==="romantic" ? "man" : "dark")} style={{background:"none",border:"none",fontSize:22,cursor:"pointer"}}>🌙</button>
-          <div style={{fontSize:14}}>{me && `Code: ${me.code}`}</div>
+    <div style={{minHeight:"100vh",background:colors.DARK,color:"#f0e8f0",fontFamily:"system-ui",display:"flex",flexDirection:"column"}}>
+      {/* Landing Page */}
+      {phase === "landing" && (
+        <div style={{flex:1,display:"flex",flexDirection:"column",justifyContent:"center",alignItems:"center",textAlign:"center",padding:"20px",background:"linear-gradient(to bottom, #0f141a, #1a222a)"}}>
+          <div style={{fontSize:90,color:colors.A,fontWeight:700,marginBottom:8}}>us.</div>
+          <p style={{fontSize:24,marginBottom:40,maxWidth:320}}>The premium app for couples who want deeper connection, more fun, and a stronger future together.</p>
+
+          <div style={{display:"grid",gap:16,width:"100%",maxWidth:380,marginBottom:40}}>
+            <div style={{background:colors.CARD,padding:16,borderRadius:16,border:`1px solid ${colors.BDR}`}}>❤️ Real conversations</div>
+            <div style={{background:colors.CARD,padding:16,borderRadius:16,border:`1px solid ${colors.BDR}`}}>🎲 Fun date ideas & games</div>
+            <div style={{background:colors.CARD,padding:16,borderRadius:16,border:`1px solid ${colors.BDR}`}}>📸 Shared memories</div>
+          </div>
+
+          <button onClick={()=>setPhase("onboard")} style={{width:"100%",padding:20,background:colors.A,color:"#070510",border:"none",borderRadius:20,fontWeight:700,fontSize:18,marginBottom:12}}>Start Our Journey</button>
+          <p style={{fontSize:14,opacity:0.7}}>Private • Secure • Built for two</p>
         </div>
-      </div>
+      )}
 
-      {!couple?.user2name && me && <div style={{padding:12,background:"#e8a59822",textAlign:"center"}}>Share code <strong>{me.code}</strong></div>}
+      {/* Rest of the app */}
+      {phase !== "landing" && (
+        <>
+          <div style={{padding:"14px 16px",background:colors.SURF,borderBottom:`1px solid ${colors.BDR}`,position:"sticky",top:0,zIndex:10,display:"flex",justifyContent:"space-between",alignItems:"center"}}>
+            <div style={{fontSize:28,fontWeight:700,color:colors.A}}>us.</div>
+            <div>{me && `Code: ${me.code}`}</div>
+          </div>
 
-      <div style={{flex:1,overflowY:"auto",padding:"20px 16px",transition:"all 0.4s"}}>
+          <div style={{flex:1,overflowY:"auto",padding:"20px 16px"}}>
         {phase === "onboard" && (
           <div style={{maxWidth:420,margin:"60px auto",textAlign:"center",animation:"fadeUp 0.6s ease"}}>
             <div style={{fontSize:80,color:colors.A,transition:"color 0.4s"}}>us.</div>
@@ -243,6 +255,8 @@ export default function Us() {
         button { transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
         button:hover { transform: scale(1.02); }
       `}</style>
+        </>
+      )}
     </div>
   );
 }

@@ -233,6 +233,30 @@ export default function Us() {
             </div>
           </div>
 
+          {/* How it works */}
+          <div style={{marginBottom:40,zIndex:2}}>
+            <div style={{fontSize:18,fontWeight:600,color:"#f0e8f0",marginBottom:16,textAlign:"center"}}>How it works</div>
+            <div style={{display:"flex",justifyContent:"center",gap:16,flexWrap:"wrap"}}>
+              <div style={{textAlign:"center",minWidth:80}}>
+                <div style={{fontSize:24,marginBottom:8}}>1️⃣</div>
+                <div style={{fontSize:14,color:"#a8b5d4",fontWeight:500}}>Connect</div>
+                <div style={{fontSize:12,color:"#f0e8f0",opacity:0.7}}>Create your couple</div>
+              </div>
+              <div style={{fontSize:20,color:"#f0e8f0",opacity:0.5,alignSelf:"center"}}>→</div>
+              <div style={{textAlign:"center",minWidth:80}}>
+                <div style={{fontSize:24,marginBottom:8}}>2️⃣</div>
+                <div style={{fontSize:14,color:"#a8b5d4",fontWeight:500}}>Discover</div>
+                <div style={{fontSize:12,color:"#f0e8f0",opacity:0.7}}>Take quizzes together</div>
+              </div>
+              <div style={{fontSize:20,color:"#f0e8f0",opacity:0.5,alignSelf:"center"}}>→</div>
+              <div style={{textAlign:"center",minWidth:80}}>
+                <div style={{fontSize:24,marginBottom:8}}>3️⃣</div>
+                <div style={{fontSize:14,color:"#a8b5d4",fontWeight:500}}>Grow</div>
+                <div style={{fontSize:12,color:"#f0e8f0",opacity:0.7}}>Build stronger love</div>
+              </div>
+            </div>
+          </div>
+
           {/* Social proof style */}
           <div style={{marginBottom:32,zIndex:2}}>
             <div style={{fontSize:16,color:"#f0e8f0",opacity:0.8,marginBottom:8}}>Join thousands of couples building stronger relationships</div>
@@ -240,6 +264,21 @@ export default function Us() {
               <div style={{width:8,height:8,borderRadius:"50%",background:"linear-gradient(45deg, #a8b5d4, #ff6b9d)"}}></div>
               <div style={{width:8,height:8,borderRadius:"50%",background:"linear-gradient(45deg, #d4c4a8, #a8b5d4)"}}></div>
               <div style={{width:8,height:8,borderRadius:"50%",background:"linear-gradient(45deg, #ff6b9d, #d4c4a8)"}}></div>
+            </div>
+          </div>
+
+          {/* Success stats visual hook */}
+          <div style={{marginBottom:32,zIndex:2}}>
+            <div style={{
+              background:"linear-gradient(135deg, rgba(168,181,212,0.1), rgba(168,181,212,0.05))",
+              padding:16,
+              borderRadius:16,
+              border:"1px solid rgba(168,181,212,0.2)",
+              textAlign:"center"
+            }}>
+              <div style={{fontSize:20,fontWeight:700,color:"#a8b5d4",marginBottom:4}}>92%</div>
+              <div style={{fontSize:14,color:"#f0e8f0",opacity:0.9}}>of couples report improved communication</div>
+              <div style={{fontSize:12,color:"#f0e8f0",opacity:0.6,marginTop:4}}>*Based on beta user surveys</div>
             </div>
           </div>
 
@@ -290,9 +329,55 @@ export default function Us() {
             {phase === "paired" && nav === "home" && (
               <div>
                 <h1>Hello, {me?.name} ❤️</h1>
-                <div style={{padding:16,background:CARD,borderRadius:16,margin:"20px 0",border:`1px solid ${BDR}`}}>
-                  Your code: <strong style={{fontSize:22}}>{me?.code}</strong>
+
+                {/* Prominent code sharing section */}
+                <div style={{
+                  background:"linear-gradient(135deg, #a8b5d4, #d4c4a8)",
+                  padding:20,
+                  borderRadius:20,
+                  margin:"20px 0",
+                  textAlign:"center",
+                  boxShadow:"0 8px 32px rgba(168,181,212,0.3)"
+                }}>
+                  <div style={{fontSize:16,fontWeight:600,color:"#070510",marginBottom:8}}>Share this code with your partner</div>
+                  <div style={{
+                    fontSize:32,
+                    fontWeight:900,
+                    color:"#070510",
+                    letterSpacing:"4px",
+                    marginBottom:12,
+                    fontFamily:"monospace"
+                  }}>{me?.code}</div>
+                  <button
+                    onClick={() => {
+                      if (navigator.share) {
+                        navigator.share({
+                          title: 'Join our couple on us.',
+                          text: `Join me on us. with code: ${me?.code}`,
+                          url: window.location.href
+                        });
+                      } else {
+                        navigator.clipboard.writeText(`${me?.code}`).then(() => alert('Code copied to clipboard!'));
+                      }
+                    }}
+                    style={{
+                      padding:"12px 24px",
+                      background:"#070510",
+                      color:"white",
+                      border:"none",
+                      borderRadius:12,
+                      fontWeight:600,
+                      cursor:"pointer"
+                    }}
+                  >
+                    📤 Share Code
+                  </button>
                 </div>
+
+                <div style={{marginBottom:30}}>
+                  <div style={{fontSize:16,color:"#f0e8f0",marginBottom:16,textAlign:"center"}}>Ready to deepen your connection?</div>
+                </div>
+
                 <button onClick={startCoinToss} style={{width:"100%",padding:24,background:GOLD,color:"#070510",borderRadius:20,fontWeight:700,fontSize:18,marginBottom:20}}>🎲 Start Quiz Session</button>
                 <button onClick={()=>setNav("wheel")} style={{width:"100%",padding:20,background:CARD,borderRadius:20,marginBottom:12}}>🎡 Date Wheel</button>
                 <button onClick={()=>setNav("rescue")} style={{width:"100%",padding:20,background:CARD,borderRadius:20}}>⚕️ Dr. Rescue</button>

@@ -1,5 +1,6 @@
 // @ts-nocheck
 // us-premium-animations.js - Smooth Transitions + All Features
+"use client";
 import { useState, useEffect } from "react";
 
 async function sGet(k, s = false) {

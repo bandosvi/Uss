@@ -16,8 +16,10 @@ async function sSet(k, v, s = false) {
 function uid() { return Math.random().toString(36).slice(2, 11); }
 function genCode() { return Math.random().toString(36).slice(2, 8).toUpperCase(); }
 
-const A = "#e8a598", DARK = "#070510", SURF = "#0e0b1a", CARD = "#140f24", BDR = "#221b35";
-const GOLD = "#d4a847";
+const THEMES = {
+  dark: { A: "#e8a598", DARK: "#070510", SURF: "#0e0b1a", CARD: "#140f24", BDR: "#221b35", GOLD: "#d4a847" },
+  romantic: { A: "#d4a8b5", DARK: "#1a0f14", SURF: "#2a1a22", CARD: "#3a2530", BDR: "#5a3f4a", GOLD: "#e8c4a8" }
+};
 
 const DDATES = ["Sunset picnic","Cook a new recipe together","Star gazing","Dance class","Museum visit","Morning hike","Wine & paint night","Midnight drive","Farmers market","Board game night","Road trip","Spa day at home","Watch the sunrise","Pottery class","Karaoke night","Bookstore date","Drive-in movie","Escape room","Concert","Breakfast in bed","Botanical garden","Kayaking"];
 
@@ -30,6 +32,9 @@ const TOPICS = [
 ];
 
 export default function Us() {
+  const [theme, setTheme] = useState("dark");
+  const colors = THEMES[theme];
+
   const [phase, setPhase] = useState("loading");
   const [me, setMe] = useState(null);
   const [couple, setCouple] = useState(null);
@@ -141,36 +146,39 @@ export default function Us() {
   };
 
   return (
-    <div style={{minHeight:"100vh",background:DARK,color:"#f0e8f0",fontFamily:"system-ui",display:"flex",flexDirection:"column"}}>
-      <div style={{padding:"14px 16px",background:SURF,borderBottom:`1px solid ${BDR}`,position:"sticky",top:0,zIndex:10,display:"flex",justifyContent:"space-between",alignItems:"center"}}>
-        <div style={{fontSize:28,fontWeight:700,color:A}}>us.</div>
-        <div>{me && `Code: ${me.code}`}</div>
+    <div style={{minHeight:"100vh",background:colors.DARK,color:"#f0e8f0",fontFamily:"system-ui",display:"flex",flexDirection:"column"}}>
+      <div style={{padding:"14px 16px",background:colors.SURF,borderBottom:`1px solid ${colors.BDR}`,position:"sticky",top:0,zIndex:10,display:"flex",justifyContent:"space-between",alignItems:"center"}}>
+        <div style={{fontSize:28,fontWeight:700,color:colors.A}}>us.</div>
+        <div style={{display:"flex",gap:12,alignItems:"center"}}>
+          <button onClick={()=>setTheme(theme==="dark"?"romantic":"dark")} style={{background:"none",border:"none",fontSize:20,cursor:"pointer",color:"#f0e8f0"}}>{theme === "dark" ? "🌙" : "💖"}</button>
+          <div>{me && `Code: ${me.code}`}</div>
+        </div>
       </div>
 
-      {!couple?.user2name && me && <div style={{padding:12,background:"#e8a59822",textAlign:"center"}}>Share code <strong>{me.code}</strong></div>}
+      {!couple?.user2name && me && <div style={{padding:12,background:`${colors.A}22`,textAlign:"center"}}>Share code <strong>{me.code}</strong></div>}
 
       <div style={{flex:1,overflowY:"auto",padding:"20px 16px"}}>
         {phase === "onboard" && (
           <div style={{maxWidth:420,margin:"60px auto",textAlign:"center"}}>
-            <div style={{fontSize:80,color:A}}>us.</div>
+            <div style={{fontSize:80,color:colors.A}}>us.</div>
             <p style={{fontSize:18,marginBottom:40}}>Deep connection. Fun dates. Lasting love.</p>
-            <input value={nameIn} onChange={e=>setNameIn(e.target.value)} placeholder="Your name" style={{width:"100%",padding:18,background:CARD,border:`1px solid ${BDR}`,borderRadius:16,marginBottom:16}} />
-            <button onClick={createCouple} style={{width:"100%",padding:18,background:A,color:"#070510",border:"none",borderRadius:16,fontWeight:700,marginBottom:12}}>Create Couple</button>
-            <button onClick={()=>setCodeIn(codeIn?"":" ")} style={{width:"100%",padding:18,background:CARD,border:`1px solid ${BDR}`,borderRadius:16}}>Join with Code</button>
-            {codeIn && <input value={codeIn} onChange={e=>setCodeIn(e.target.value.toUpperCase())} placeholder="6-LETTER CODE" maxLength={6} style={{width:"100%",padding:18,background:CARD,border:`1px solid ${BDR}`,borderRadius:16,marginTop:12,textAlign:"center",letterSpacing:"6px"}} />}
-            {codeIn && <button onClick={joinCouple} style={{width:"100%",padding:18,background:A,color:"#070510",border:"none",borderRadius:16,fontWeight:700,marginTop:12}}>Join</button>}
+            <input value={nameIn} onChange={e=>setNameIn(e.target.value)} placeholder="Your name" style={{width:"100%",padding:18,background:colors.CARD,border:`1px solid ${colors.BDR}`,borderRadius:16,marginBottom:16}} />
+            <button onClick={createCouple} style={{width:"100%",padding:18,background:colors.A,color:colors.DARK,border:"none",borderRadius:16,fontWeight:700,marginBottom:12}}>Create Couple</button>
+            <button onClick={()=>setCodeIn(codeIn?"":" ")} style={{width:"100%",padding:18,background:colors.CARD,border:`1px solid ${colors.BDR}`,borderRadius:16}}>Join with Code</button>
+            {codeIn && <input value={codeIn} onChange={e=>setCodeIn(e.target.value.toUpperCase())} placeholder="6-LETTER CODE" maxLength={6} style={{width:"100%",padding:18,background:colors.CARD,border:`1px solid ${colors.BDR}`,borderRadius:16,marginTop:12,textAlign:"center",letterSpacing:"6px"}} />}
+            {codeIn && <button onClick={joinCouple} style={{width:"100%",padding:18,background:colors.A,color:colors.DARK,border:"none",borderRadius:16,fontWeight:700,marginTop:12}}>Join</button>}
           </div>
         )}
 
         {phase === "paired" && nav === "home" && (
           <div>
             <h1>Hello, {me?.name} ❤️</h1>
-            <div style={{padding:16,background:CARD,borderRadius:16,margin:"20px 0",border:`1px solid ${BDR}`}}>
+            <div style={{padding:16,background:colors.CARD,borderRadius:16,margin:"20px 0",border:`1px solid ${colors.BDR}`}}>
               Your code: <strong style={{fontSize:22}}>{me?.code}</strong>
             </div>
-            <button onClick={startCoinToss} style={{width:"100%",padding:24,background:GOLD,color:"#070510",borderRadius:20,fontWeight:700,fontSize:18,marginBottom:20}}>🎲 Start Quiz Session</button>
-            <button onClick={()=>setNav("wheel")} style={{width:"100%",padding:20,background:CARD,borderRadius:20,marginBottom:12}}>🎡 Date Wheel</button>
-            <button onClick={()=>setNav("rescue")} style={{width:"100%",padding:20,background:CARD,borderRadius:20}}>⚕️ Dr. Rescue</button>
+            <button onClick={startCoinToss} style={{width:"100%",padding:24,background:colors.GOLD,color:colors.DARK,borderRadius:20,fontWeight:700,fontSize:18,marginBottom:20}}>🎲 Start Quiz Session</button>
+            <button onClick={()=>setNav("wheel")} style={{width:"100%",padding:20,background:colors.CARD,borderRadius:20,marginBottom:12}}>🎡 Date Wheel</button>
+            <button onClick={()=>setNav("rescue")} style={{width:"100%",padding:20,background:colors.CARD,borderRadius:20}}>⚕️ Dr. Rescue</button>
             <button onClick={logout} style={{marginTop:40,color:"#e87c7c",width:"100%",padding:14}}>Logout</button>
           </div>
         )}
@@ -179,7 +187,7 @@ export default function Us() {
           <div>
             <h2>Choose Topic</h2>
             {TOPICS.map(t => (
-              <button key={t.id} onClick={()=>startQuiz(t)} style={{width:"100%",padding:20,background:CARD,borderRadius:20,marginBottom:12,textAlign:"left",border:`1px solid ${BDR}`}}>
+              <button key={t.id} onClick={()=>startQuiz(t)} style={{width:"100%",padding:20,background:colors.CARD,borderRadius:20,marginBottom:12,textAlign:"left",border:`1px solid ${colors.BDR}`}}>
                 <span style={{fontSize:32,marginRight:16}}>{t.emoji}</span> {t.name}
               </button>
             ))}
@@ -188,12 +196,12 @@ export default function Us() {
 
         {activeQuiz && (
           <div style={{paddingBottom:100}}>
-            <button onClick={()=>setActiveQuiz(null)} style={{color:A,marginBottom:20}}>← Back</button>
+            <button onClick={()=>setActiveQuiz(null)} style={{color:colors.A,marginBottom:20}}>← Back</button>
             <div style={{fontSize:26,marginBottom:16}}>{activeQuiz.emoji} {activeQuiz.title}</div>
             <div style={{fontSize:19,lineHeight:1.5,marginBottom:30}}>{activeQuiz.questions[currentStep]?.q}</div>
             <div style={{display:"flex",flexDirection:"column",gap:14}}>
               {activeQuiz.questions[currentStep]?.opts?.map((o,i) => (
-                <button key={i} onClick={()=>answer(o)} style={{padding:20,background:CARD,borderRadius:20,border:`1px solid ${BDR}`}}>{o}</button>
+                <button key={i} onClick={()=>answer(o)} style={{padding:20,background:colors.CARD,borderRadius:20,border:`1px solid ${colors.BDR}`}}>{o}</button>
               ))}
             </div>
           </div>
@@ -202,22 +210,22 @@ export default function Us() {
         {nav === "wheel" && (
           <div style={{textAlign:"center",padding:"60px 20px"}}>
             <h2>Date Wheel</h2>
-            <button onClick={()=>alert(`🎡 ${DDATES[Math.floor(Math.random()*DDATES.length)]}`)} style={{padding:"28px 80px",background:GOLD,color:"#070510",border:"none",borderRadius:999,fontSize:22,fontWeight:700}}>Spin the Wheel</button>
+            <button onClick={()=>alert(`🎡 ${DDATES[Math.floor(Math.random()*DDATES.length)]}`)} style={{padding:"28px 80px",background:colors.GOLD,color:colors.DARK,border:"none",borderRadius:999,fontSize:22,fontWeight:700}}>Spin the Wheel</button>
           </div>
         )}
 
         {nav === "rescue" && (
           <div>
             <h2>Dr. Rescue</h2>
-            <button onClick={()=>{const t=prompt("Topic?");if(t){alert("Dr. Rescue: Listen fully, speak kindly, focus on solutions.");}}} style={{padding:20,background:CARD,borderRadius:20,width:"100%",marginTop:20}}>Open New Case</button>
+            <button onClick={()=>{const t=prompt("Topic?");if(t){alert("Dr. Rescue: Listen fully, speak kindly, focus on solutions.");}}} style={{padding:20,background:colors.CARD,borderRadius:20,width:"100%",marginTop:20}}>Open New Case</button>
           </div>
         )}
       </div>
 
       {phase === "paired" && (
-        <div style={{position:"fixed",bottom:0,left:0,right:0,background:SURF,borderTop:`1px solid ${BDR}`,display:"flex",padding:"8px 0",zIndex:100}}>
+        <div style={{position:"fixed",bottom:0,left:0,right:0,background:colors.SURF,borderTop:`1px solid ${colors.BDR}`,display:"flex",padding:"8px 0",zIndex:100}}>
           {[{id:"home",icon:"🏠"},{id:"quiz",icon:"💡"},{id:"wheel",icon:"🎡"},{id:"rescue",icon:"⚕️"}].map(item => (
-            <button key={item.id} onClick={()=>setNav(item.id)} style={{flex:1,padding:"12px 8px",background:nav===item.id?A:"transparent",color:nav===item.id?"#070510":"#f0e8f0",border:"none",borderRadius:12,fontSize:11}}>
+            <button key={item.id} onClick={()=>setNav(item.id)} style={{flex:1,padding:"12px 8px",background:nav===item.id?colors.A:"transparent",color:nav===item.id?colors.DARK:"#f0e8f0",border:"none",borderRadius:12,fontSize:11}}>
               <div style={{fontSize:26}}>{item.icon}</div>
               <div>{item.id}</div>
             </button>

@@ -51,8 +51,9 @@ export default function Us() {
       const sess = await sGet("sess:us");
       if (sess?.code) {
         const c = await sGet(`couple:${sess.code}`, true);
-        if (c) { setMe(sess); setCouple(c); setPhase("paired"); }
-      } else setPhase("onboard");
+        if (c) { setMe(sess); setCouple(c); } // Store session data but stay on landing
+      }
+      // Always start with landing page, even for returning users
     })();
   }, []);
 

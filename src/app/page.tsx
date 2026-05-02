@@ -1,37 +1,170 @@
 // @ts-nocheck
 "use client";
-import { useState, useEffect } from "react";
-
-async function sGet(k, s = false) {
-  try {
-    const r = await window.storage?.get(k, s);
-    return r ? JSON.parse(r.value) : null;
-  } catch { return null; }
-}
-
-async function sSet(k, v, s = false) {
-  try { await window.storage?.set(k, JSON.stringify(v), s); } catch {}
-}
-
-function uid() { return Math.random().toString(36).slice(2, 11); }
-function genCode() { return Math.random().toString(36).slice(2, 8).toUpperCase(); }
+import { useState } from "react";
 
 const A = "#e8a598", DARK = "#070510", SURF = "#0e0b1a", CARD = "#140f24", BDR = "#221b35";
-const GOLD = "#d4a847", TEAL = "#7fcfcf";
+const GOLD = "#d4a847", TEAL = "#7fcfcf", GRN = "#6dbc7a";
 
-const DDATES = ["Sunset picnic","Cook a new recipe together","Star gazing","Dance class","Museum visit","Morning hike","Wine & paint night","Midnight drive","Farmers market","Board game night","Road trip","Spa day at home","Watch the sunrise","Pottery class","Karaoke night","Bookstore date","Drive-in movie","Escape room","Concert","Breakfast in bed","Botanical garden","Kayaking"];
+export default function Landing() {
+  const [showApp, setShowApp] = useState(false);
 
-const TOPICS = [
-  {id:"all-me", name:"All About Me", emoji:"👤"},
-  {id:"all-you", name:"All About You", emoji:"❤️"},
-  {id:"love", name:"Love & Romance", emoji:"💌"},
-  {id:"future", name:"Future Dreams", emoji:"🌠"},
-  {id:"favorites", name:"Favorites", emoji:"⭐"},
-  {id:"intimacy", name:"Intimacy & Sex", emoji:"🔥"},
-  {id:"fun", name:"Fun & Play", emoji:"🎲"}
-];
+  if (showApp) {
+    return <UsApp onBack={() => setShowApp(false)} />;
+  }
 
-export default function Us() {
+  return (
+    <div style={{minHeight:"100vh",background:DARK,color:"#f0e8f0",fontFamily:"system-ui"}}>
+      {/* Header */}
+      <div style={{padding:"20px 16px",background:SURF,borderBottom:`1px solid ${BDR}`,display:"flex",justifyContent:"space-between",alignItems:"center"}}>
+        <div style={{fontSize:32,fontWeight:700,color:A}}>us.</div>
+        <button onClick={() => setShowApp(true)} style={{padding:"12px 20px",background:A,color:"#070510",border:"none",borderRadius:12,fontWeight:600}}>Try Free</button>
+      </div>
+
+      {/* Hero */}
+      <div style={{padding:"60px 20px",textAlign:"center",background:`linear-gradient(135deg, ${SURF} 0%, ${DARK} 100%)`}}>
+        <div style={{fontSize:72,color:A,marginBottom:16}}>us.</div>
+        <h1 style={{fontSize:28,fontWeight:700,marginBottom:16}}>The Ultimate Couples App</h1>
+        <p style={{fontSize:18,lineHeight:1.6,opacity:0.9,marginBottom:32}}>
+          Deepen your connection through meaningful conversations, fun games, and shared memories.
+        </p>
+        <button onClick={() => setShowApp(true)} style={{padding:"20px 40px",background:GOLD,color:"#070510",border:"none",borderRadius:20,fontSize:18,fontWeight:700}}>Start Your Journey</button>
+      </div>
+
+      {/* Features */}
+      <div style={{padding:"40px 20px"}}>
+        <h2 style={{fontSize:32,textAlign:"center",marginBottom:40,color:A}}>What Makes Us Special</h2>
+
+        <div style={{display:"grid",gap:24}}>
+          <div style={{padding:24,background:CARD,borderRadius:20,border:`1px solid ${BDR}`}}>
+            <div style={{fontSize:40,marginBottom:16}}>🎲</div>
+            <h3 style={{fontSize:20,fontWeight:600,marginBottom:12}}>Fair Play Sessions</h3>
+            <p>Coin toss decides who picks the topic for truly democratic conversations.</p>
+          </div>
+
+          <div style={{padding:24,background:CARD,borderRadius:20,border:`1px solid ${BDR}`}}>
+            <div style={{fontSize:40,marginBottom:16}}>💡</div>
+            <h3 style={{fontSize:20,fontWeight:600,marginBottom:12}}>70+ Deep Questions</h3>
+            <p>7 relationship topics with 10 thoughtful questions each for meaningful discussions.</p>
+          </div>
+
+          <div style={{padding:24,background:CARD,borderRadius:20,border:`1px solid ${BDR}`}}>
+            <div style={{fontSize:40,marginBottom:16}}>🎡</div>
+            <h3 style={{fontSize:20,fontWeight:600,marginBottom:12}}>Date Ideas</h3>
+            <p>Spin our wheel for spontaneous date inspiration from 22 romantic activities.</p>
+          </div>
+
+          <div style={{padding:24,background:CARD,borderRadius:20,border:`1px solid ${BDR}`}}>
+            <div style={{fontSize:40,marginBottom:16}}>📸</div>
+            <h3 style={{fontSize:20,fontWeight:600,marginBottom:12}}>Photo Memories</h3>
+            <p>Coming soon: Shared photo album for your relationship milestones.</p>
+          </div>
+
+          <div style={{padding:24,background:CARD,borderRadius:20,border:`1px solid ${BDR}`}}>
+            <div style={{fontSize:40,marginBottom:16}}>⚕️</div>
+            <h3 style={{fontSize:20,fontWeight:600,marginBottom:12}}>Relationship Support</h3>
+            <p>Dr. Rescue provides guidance for navigating relationship challenges.</p>
+          </div>
+        </div>
+      </div>
+
+      {/* Pricing */}
+      <div style={{padding:"40px 20px",background:SURF}}>
+        <h2 style={{fontSize:32,textAlign:"center",marginBottom:16,color:A}}>Pricing</h2>
+        <p style={{textAlign:"center",marginBottom:40,opacity:0.8}}>
+          Currently <strong>FREE</strong> during beta. Premium features coming soon.
+        </p>
+
+        <div style={{display:"grid",gap:20}}>
+          <div style={{padding:24,background:CARD,borderRadius:20,border:`2px solid ${GOLD}`}}>
+            <div style={{fontSize:24,fontWeight:700,marginBottom:8,color:GOLD}}>Lifetime Membership</div>
+            <div style={{fontSize:32,fontWeight:700,marginBottom:16,color:A}}>$29</div>
+            <p style={{marginBottom:20}}>One-time payment, access forever</p>
+            <div style={{fontSize:14,opacity:0.7,marginBottom:16}}>
+              ⏰ Limited time offer before official launch<br/>
+              📈 Price increases to $49 after launch<br/>
+              ❌ No longer available after 6 months live
+            </div>
+            <button style={{width:"100%",padding:16,background:GOLD,color:"#070510",border:"none",borderRadius:12,fontWeight:600}}>Get Lifetime Access - $29</button>
+          </div>
+
+          <div style={{padding:24,background:CARD,borderRadius:20,border:`1px solid ${BDR}`,opacity:0.6}}>
+            <div style={{fontSize:20,fontWeight:600,marginBottom:8}}>Monthly Subscription</div>
+            <div style={{fontSize:24,fontWeight:600,marginBottom:16}}>$4.99/month</div>
+            <p>Available after official launch</p>
+          </div>
+
+          <div style={{padding:24,background:CARD,borderRadius:20,border:`1px solid ${BDR}`,opacity:0.6}}>
+            <div style={{fontSize:20,fontWeight:600,marginBottom:8}}>Yearly Subscription</div>
+            <div style={{fontSize:24,fontWeight:600,marginBottom:16}}>$39/year</div>
+            <p>Available after official launch</p>
+          </div>
+        </div>
+
+        <div style={{marginTop:32,textAlign:"center"}}>
+          <p style={{fontSize:14,opacity:0.7,lineHeight:1.6}}>
+            🚀 <strong>Free During Development:</strong> All features unlocked now<br/>
+            ⏰ <strong>Limited Time:</strong> Lifetime membership at $29 before launch<br/>
+            📈 <strong>Future Pricing:</strong> $49 lifetime after launch, then subscription-only<br/>
+            ❌ <strong>Deadline:</strong> Lifetime option ends 6 months after going live
+          </p>
+        </div>
+      </div>
+
+      {/* Future Features */}
+      <div style={{padding:"40px 20px"}}>
+        <h2 style={{fontSize:32,textAlign:"center",marginBottom:40,color:A}}>Coming Soon</h2>
+
+        <div style={{display:"grid",gap:20}}>
+          <div style={{padding:20,background:CARD,borderRadius:16,border:`1px solid ${BDR}`}}>
+            <h3 style={{fontSize:18,fontWeight:600,marginBottom:8}}>🎯 Compatibility Scoring</h3>
+            <p>Compare answers with your partner and get relationship insights</p>
+          </div>
+
+          <div style={{padding:20,background:CARD,borderRadius:16,border:`1px solid ${BDR}`}}>
+            <h3 style={{fontSize:18,fontWeight:600,marginBottom:8}}>📊 Progress Tracking</h3>
+            <p>Track how well you know each other over time</p>
+          </div>
+
+          <div style={{padding:20,background:CARD,borderRadius:16,border:`1px solid ${BDR}`}}>
+            <h3 style={{fontSize:18,fontWeight:600,marginBottom:8}}>💬 AI Relationship Coach</h3>
+            <p>Personalized advice based on your quiz answers</p>
+          </div>
+
+          <div style={{padding:20,background:CARD,borderRadius:16,border:`1px solid ${BDR}`}}>
+            <h3 style={{fontSize:18,fontWeight:600,marginBottom:8}}>📅 Shared Calendar</h3>
+            <p>Plan dates and track relationship milestones together</p>
+          </div>
+
+          <div style={{padding:20,background:CARD,borderRadius:16,border:`1px solid ${BDR}`}}>
+            <h3 style={{fontSize:18,fontWeight:600,marginBottom:8}}>🎮 More Games</h3>
+            <p>Truth or Dare, Would You Rather, and relationship challenges</p>
+          </div>
+        </div>
+      </div>
+
+      {/* CTA */}
+      <div style={{padding:"40px 20px",textAlign:"center",background:SURF}}>
+        <h2 style={{fontSize:28,marginBottom:16}}>Ready to Deepen Your Connection?</h2>
+        <p style={{marginBottom:32,opacity:0.9}}>
+          Join thousands of couples strengthening their relationships through meaningful conversations.
+        </p>
+        <button onClick={() => setShowApp(true)} style={{padding:"20px 40px",background:A,color:"#070510",border:"none",borderRadius:20,fontSize:18,fontWeight:700}}>
+          Start Your Free Journey
+        </button>
+      </div>
+
+      {/* Footer */}
+      <div style={{padding:"20px",textAlign:"center",borderTop:`1px solid ${BDR}`,background:SURF}}>
+        <p style={{fontSize:14,opacity:0.7}}>
+          Made with ❤️ for couples everywhere • Currently in beta • Free during development
+        </p>
+      </div>
+    </div>
+  );
+}
+
+// The main app component
+function UsApp({ onBack }) {
   const [phase, setPhase] = useState("loading");
   const [me, setMe] = useState(null);
   const [couple, setCouple] = useState(null);
@@ -43,6 +176,34 @@ export default function Us() {
   const [answers, setAnswers] = useState({});
   const [showCoinToss, setShowCoinToss] = useState(false);
   const [coinWinner, setCoinWinner] = useState(null);
+
+  // ... existing app code ...
+
+  const DDATES = ["Sunset picnic","Cook a new recipe together","Star gazing","Dance class","Museum visit","Morning hike","Wine & paint night","Midnight drive","Farmers market","Board game night","Road trip","Spa day at home","Watch the sunrise","Pottery class","Karaoke night","Bookstore date","Drive-in movie","Escape room","Concert","Breakfast in bed","Botanical garden","Kayaking"];
+
+  const TOPICS = [
+    {id:"all-me", name:"All About Me", emoji:"👤"},
+    {id:"all-you", name:"All About You", emoji:"❤️"},
+    {id:"love", name:"Love & Romance", emoji:"💌"},
+    {id:"future", name:"Future Dreams", emoji:"🌠"},
+    {id:"favorites", name:"Favorites", emoji:"⭐"},
+    {id:"intimacy", name:"Intimacy & Sex", emoji:"🔥"},
+    {id:"fun", name:"Fun & Play", emoji:"🎲"}
+  ];
+
+  async function sGet(k, s = false) {
+    try {
+      const r = await window.storage?.get(k, s);
+      return r ? JSON.parse(r.value) : null;
+    } catch { return null; }
+  }
+
+  async function sSet(k, v, s = false) {
+    try { await window.storage?.set(k, JSON.stringify(v), s); } catch {}
+  }
+
+  function uid() { return Math.random().toString(36).slice(2, 11); }
+  function genCode() { return Math.random().toString(36).slice(2, 8).toUpperCase(); }
 
   useEffect(() => {
     (async () => {
@@ -127,8 +288,14 @@ export default function Us() {
   return (
     <div style={{minHeight:"100vh",background:DARK,color:"#f0e8f0",fontFamily:"system-ui",display:"flex",flexDirection:"column"}}>
       <div style={{padding:"14px 16px",background:SURF,borderBottom:`1px solid ${BDR}`,position:"sticky",top:0,zIndex:10,display:"flex",justifyContent:"space-between",alignItems:"center"}}>
+        <button onClick={onBack} style={{color:A,fontSize:18}}>← Landing</button>
         <div style={{fontSize:28,fontWeight:700,color:A}}>us.</div>
         <div>{me && `Code: ${me.code}`}</div>
+      </div>
+
+      {/* Free Beta Banner */}
+      <div style={{padding:"8px 16px",background:GOLD,color:"#070510",textAlign:"center",fontSize:14,fontWeight:600}}>
+        🎉 FREE BETA - Premium features coming soon at $4.99/month or $39/year
       </div>
 
       {!couple?.user2name && me && <div style={{padding:12,background:"#e8a59822",textAlign:"center"}}>Share code <strong>{me.code}</strong></div>}

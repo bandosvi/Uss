@@ -106,19 +106,166 @@ export default function Us() {
   return (
     <div style={{minHeight:"100vh",background:DARK,color:"#f0e8f0",fontFamily:"system-ui",display:"flex",flexDirection:"column"}}>
       {phase === "landing" && (
-        <div style={{flex:1,display:"flex",flexDirection:"column",justifyContent:"center",alignItems:"center",textAlign:"center",padding:"40px 20px",background:"linear-gradient(180deg, #0f141a 0%, #1a222a 100%)"}}>
-          <div style={{fontSize:92,color:A,fontWeight:700,marginBottom:16}}>us.</div>
-          <p style={{fontSize:26,marginBottom:8,lineHeight:1.2}}>Strong connection.<br/>Real talks.<br/>Lasting love.</p>
-          <p style={{fontSize:18,opacity:0.8,maxWidth:320,marginBottom:40}}>The premium app for couples who want more than surface level.</p>
-
-          <div style={{display:"grid",gap:16,width:"100%",maxWidth:360,marginBottom:50}}>
-            <div style={{background:"#1a222a",padding:20,borderRadius:16,border:"1px solid #3a4a5a"}}>❤️ Deeper conversations</div>
-            <div style={{background:"#1a222a",padding:20,borderRadius:16,border:"1px solid #3a4a5a"}}>🎲 Fun competitive games</div>
-            <div style={{background:"#1a222a",padding:20,borderRadius:16,border:"1px solid #3a4a5a"}}>📸 Shared memories</div>
+        <div style={{flex:1,display:"flex",flexDirection:"column",justifyContent:"center",alignItems:"center",textAlign:"center",padding:"40px 20px",background:"linear-gradient(135deg, #0f141a 0%, #1a222a 50%, #25303a 100%)",position:"relative",overflow:"hidden"}}>
+          {/* Floating hearts animation */}
+          <div style={{position:"absolute",top:0,left:0,right:0,bottom:0,pointerEvents:"none",zIndex:1}}>
+            {[...Array(6)].map((_,i) => (
+              <div key={i} style={{
+                position:"absolute",
+                left:`${15+Math.random()*70}%`,
+                top:`${Math.random()*100}%`,
+                fontSize:`${16+Math.random()*12}px`,
+                animation:`float ${4+Math.random()*3}s ease-in-out infinite`,
+                animationDelay:`${Math.random()*2}s`,
+                color:"#ff6b9d",
+                opacity:0.7
+              }}>💖</div>
+            ))}
           </div>
 
-          <button onClick={()=>setPhase("onboard")} style={{width:"100%",maxWidth:360,padding:20,background:A,color:"#070510",border:"none",borderRadius:20,fontWeight:700,fontSize:19}}>Start Our Journey</button>
-          <p style={{marginTop:30,fontSize:14,opacity:0.6}}>Private • Secure • Built only for two</p>
+          {/* Hero section */}
+          <div style={{position:"relative",zIndex:2,marginBottom:40}}>
+            <div style={{
+              fontSize:96,
+              fontWeight:900,
+              background:"linear-gradient(45deg, #a8b5d4, #ff6b9d, #d4c4a8)",
+              backgroundClip:"text",
+              WebkitBackgroundClip:"text",
+              color:"transparent",
+              textShadow:"0 0 40px rgba(168,181,212,0.3)",
+              marginBottom:20
+            }}>us.</div>
+
+            <div style={{
+              fontSize:28,
+              fontWeight:700,
+              background:"linear-gradient(45deg, #f0e8f0, #a8b5d4)",
+              backgroundClip:"text",
+              WebkitBackgroundClip:"text",
+              color:"transparent",
+              marginBottom:16,
+              lineHeight:1.2
+            }}>Stronger Relationships,<br/>One Question at a Time</div>
+
+            <p style={{fontSize:18,color:"#f0e8f0",opacity:0.9,maxWidth:340,marginBottom:32}}>
+              The couples app that turns awkward silences into meaningful conversations and "I don't know" dates into unforgettable memories.
+            </p>
+          </div>
+
+          {/* Interactive demo section */}
+          <div style={{display:"grid",gap:20,width:"100%",maxWidth:380,marginBottom:40,zIndex:2}}>
+            <div style={{
+              background:"linear-gradient(135deg, rgba(168,181,212,0.1), rgba(168,181,212,0.05))",
+              padding:24,
+              borderRadius:20,
+              border:"1px solid rgba(168,181,212,0.3)",
+              backdropFilter:"blur(10px)",
+              cursor:"pointer",
+              transition:"all 0.3s ease",
+              position:"relative",
+              overflow:"hidden"
+            }}>
+              <div style={{
+                position:"absolute",
+                top:0,
+                right:0,
+                width:60,
+                height:60,
+                background:"linear-gradient(135deg, #ff6b9d, #a8b5d4)",
+                borderRadius:"50%",
+                opacity:0.1
+              }}></div>
+              <div style={{fontSize:20,fontWeight:600,color:"#f0e8f0",marginBottom:8}}>❓ Quiz Time</div>
+              <div style={{fontSize:16,color:"#a8b5d4",marginBottom:12}}>Discover how well you really know each other</div>
+              <div style={{fontSize:14,color:"#f0e8f0",opacity:0.8}}>10 questions • Instant compatibility score • Fun insights</div>
+            </div>
+
+            <div style={{
+              background:"linear-gradient(135deg, rgba(212,196,168,0.1), rgba(212,196,168,0.05))",
+              padding:24,
+              borderRadius:20,
+              border:"1px solid rgba(212,196,168,0.3)",
+              backdropFilter:"blur(10px)",
+              cursor:"pointer",
+              transition:"all 0.3s ease",
+              position:"relative",
+              overflow:"hidden"
+            }}>
+              <div style={{
+                position:"absolute",
+                top:0,
+                right:0,
+                width:60,
+                height:60,
+                background:"linear-gradient(135deg, #d4c4a8, #ff6b9d)",
+                borderRadius:"50%",
+                opacity:0.1
+              }}></div>
+              <div style={{fontSize:20,fontWeight:600,color:"#f0e8f0",marginBottom:8}}>🎲 Decision Maker</div>
+              <div style={{fontSize:16,color:"#d4c4a8",marginBottom:12}}>Never argue about what to do again</div>
+              <div style={{fontSize:14,color:"#f0e8f0",opacity:0.8}}>Coin toss • Date wheel • Fair & fun</div>
+            </div>
+
+            <div style={{
+              background:"linear-gradient(135deg, rgba(255,107,157,0.1), rgba(255,107,157,0.05))",
+              padding:24,
+              borderRadius:20,
+              border:"1px solid rgba(255,107,157,0.3)",
+              backdropFilter:"blur(10px)",
+              cursor:"pointer",
+              transition:"all 0.3s ease",
+              position:"relative",
+              overflow:"hidden"
+            }}>
+              <div style={{
+                position:"absolute",
+                top:0,
+                right:0,
+                width:60,
+                height:60,
+                background:"linear-gradient(135deg, #a8b5d4, #d4c4a8)",
+                borderRadius:"50%",
+                opacity:0.1
+              }}></div>
+              <div style={{fontSize:20,fontWeight:600,color:"#f0e8f0",marginBottom:8}}>💬 Relationship Coach</div>
+              <div style={{fontSize:16,color:"#ff6b9d",marginBottom:12}}>Professional advice when you need it</div>
+              <div style={{fontSize:14,color:"#f0e8f0",opacity:0.8}}>Dr. Rescue • Expert guidance • Private sessions</div>
+            </div>
+          </div>
+
+          {/* Social proof style */}
+          <div style={{marginBottom:32,zIndex:2}}>
+            <div style={{fontSize:16,color:"#f0e8f0",opacity:0.8,marginBottom:8}}>Join thousands of couples building stronger relationships</div>
+            <div style={{display:"flex",justifyContent:"center",gap:8}}>
+              <div style={{width:8,height:8,borderRadius:"50%",background:"linear-gradient(45deg, #a8b5d4, #ff6b9d)"}}></div>
+              <div style={{width:8,height:8,borderRadius:"50%",background:"linear-gradient(45deg, #d4c4a8, #a8b5d4)"}}></div>
+              <div style={{width:8,height:8,borderRadius:"50%",background:"linear-gradient(45deg, #ff6b9d, #d4c4a8)"}}></div>
+            </div>
+          </div>
+
+          {/* CTA */}
+          <button onClick={()=>setPhase("onboard")} style={{
+            width:"100%",
+            maxWidth:360,
+            padding:22,
+            background:"linear-gradient(45deg, #a8b5d4, #ff6b9d)",
+            color:"#070510",
+            border:"none",
+            borderRadius:25,
+            fontWeight:800,
+            fontSize:20,
+            boxShadow:"0 8px 32px rgba(168,181,212,0.4)",
+            position:"relative",
+            zIndex:2,
+            cursor:"pointer",
+            transition:"all 0.3s ease"
+          }}>
+            Start Your Love Story ✨
+          </button>
+
+          <p style={{marginTop:24,fontSize:16,color:"#f0e8f0",opacity:0.7,zIndex:2}}>
+            100% Free • No Sign-up Required • Just You Two
+          </p>
         </div>
       )}
 
@@ -207,6 +354,15 @@ export default function Us() {
           )}
         </>
       )}
+
+      <style>{`
+        @keyframes float {
+          0%, 100% { transform: translateY(0px) rotate(0deg); }
+          25% { transform: translateY(-20px) rotate(5deg); }
+          50% { transform: translateY(-10px) rotate(-5deg); }
+          75% { transform: translateY(-25px) rotate(3deg); }
+        }
+      `}</style>
     </div>
   );
 }

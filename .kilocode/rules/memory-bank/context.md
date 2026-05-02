@@ -27,13 +27,14 @@ The template is a clean Next.js 16 starter with TypeScript and Tailwind CSS 4. I
 
 ## Current Focus
 
-Successfully deployed the complete "us." couples app with 5 relationship quizzes:
+Successfully deployed the "us." couples app with fun guessing quizzes:
 
-- **Quiz Studio**: Love Languages, Attachment Style, Apology Languages, This or That, Hard Questions
-- **Date Wheel**: Random date idea generator with 22 built-in activities
-- **Dr. Rescue**: Relationship conflict resolution tool
-- **Mobile-Optimized**: Full mobile-first design with smooth UX
-- **Live on Vercel**: Production-ready with persistent storage
+- **Quiz Collection**: Love Languages + 3 new guessing quizzes (Favorite Date, Perfect Gift, Dream Date Night)
+- **Guessing Games**: Couples can guess each other's preferences and favorites
+- **Date Wheel**: 22 romantic date ideas with random selection
+- **Dr. Rescue**: Relationship guidance tool
+- **Mobile-First**: Optimized for couple bonding on mobile devices
+- **Live on Vercel**: Production-ready with persistent couple data
 
 ## Quick Start Guide
 
@@ -91,4 +92,5 @@ export async function GET() {
 | 2026-05-02 | Verified template builds successfully with bun run build |
 | 2026-05-02 | Implemented complete "us." couples app with all features (quizzes, date wheel, calendar, notes, Dr. Rescue) |
 | 2026-05-02 | Deployed streamlined mobile-optimized version to Vercel |
-| 2026-05-02 | Deployed final version with 5 comprehensive relationship quizzes (Love Languages, Attachment Style, Apology Languages, This or That, Hard Questions)
+| 2026-05-02 | Deployed final version with 5 comprehensive relationship quizzes (Love Languages, Attachment Style, Apology Languages, This or That, Hard Questions) |
+| 2026-05-02 | Deployed version with fun guessing quizzes: Guess Favorite Date, Guess Perfect Gift, Dream Date Night

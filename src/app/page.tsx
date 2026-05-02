@@ -22,36 +22,40 @@ const GOLD = "#d4a847", TEAL = "#7fcfcf";
 const DDATES = ["Sunset picnic","Cook a new recipe together","Star gazing","Dance class","Museum visit","Morning hike","Wine & paint night","Midnight drive","Farmers market","Board game night","Road trip","Spa day at home","Watch the sunrise","Pottery class","Karaoke night","Bookstore date","Drive-in movie","Escape room","Concert","Breakfast in bed","Botanical garden","Kayaking"];
 
 const QZ = [
-  // Love Languages
+  // Classic
   {id:"love-lang",title:"Love Languages",emoji:"💌",color:A,desc:"How you give and receive love",time:"8 min",type:"choice",
-   questions:[
-     {q:"You had a rough week. What would feel most healing?",opts:[{t:"A long heartfelt message",k:"WA"},{t:"Full phone-free attention",k:"QT"},{t:"A thoughtful gift",k:"GG"},{t:"Partner handled everything",k:"AS"},{t:"Being held",k:"PT"}]},
-     {q:"You express love most naturally by…",opts:[{t:"Words and compliments",k:"WA"},{t:"Quality time together",k:"QT"},{t:"Giving gifts",k:"GG"},{t:"Acts of service",k:"AS"},{t:"Physical touch",k:"PT"}]}
-   ],
+   questions:[{q:"You had a rough week. What would feel most healing?",opts:[{t:"Heartfelt message",k:"WA"},{t:"Full attention",k:"QT"},{t:"Thoughtful gift",k:"GG"},{t:"Acts of service",k:"AS"},{t:"Physical touch",k:"PT"}]}],
    keys:{WA:{n:"Words of Affirmation"},QT:{n:"Quality Time"},GG:{n:"Gifts"},AS:{n:"Acts of Service"},PT:{n:"Physical Touch"}}
   },
-  // Attachment Style
-  {id:"attachment",title:"Attachment Style",emoji:"🔗",color:"#9b7fa8",desc:"Your relational wiring",time:"8 min",type:"choice",
+
+  // New Fun Guessing Quizzes
+  {id:"guess-date",title:"Guess My Favorite Date",emoji:"🌲",color:GOLD,desc:"Romantic spots, adventures & cozy nights",time:"6 min",type:"choice",
    questions:[
-     {q:"When my partner doesn't text back, I usually…",opts:[{t:"Assume they're busy",k:"SEC"},{t:"Feel uneasy and check phone",k:"ANX"},{t:"Barely notice",k:"AVO"}]}
+     {q:"My dream date would be...",opts:[{t:"Picnic in the woods",k:"woods"},{t:"Romantic walk in Paris",k:"paris"},{t:"Cozy movie night at home",k:"home"},{t:"Sunset at the beach",k:"beach"},{t:"Adventure hike + picnic",k:"hike"}]}
    ],
-   keys:{SEC:{n:"Secure"},ANX:{n:"Anxious"},AVO:{n:"Avoidant"}}
+   keys:{woods:{n:"Nature Lover"},paris:{n:"Romantic City"},home:{n:"Cozy Homebody"},beach:{n:"Beach Romantic"},hike:{n:"Adventure Seeker"}}
   },
-  // Apology Languages
-  {id:"apology",title:"Apology Languages",emoji:"🕊️",color:"#b8d4e8",desc:"How you need to receive an apology",time:"6 min",type:"choice",
-   questions:[{q:"An apology feels real when your partner…",opts:[{t:"Clearly says I was wrong",k:"EW"},{t:"Asks what they can do to fix it",k:"MR"}]}],
-   keys:{EW:{n:"Expressing Regret"},MR:{n:"Making Restitution"}}
-  },
-  // This or That
-  {id:"this-or-that",title:"This or That",emoji:"🎲",color:GOLD,desc:"Fast & revealing",time:"4 min",type:"this-or-that",
+
+  {id:"guess-gift",title:"Guess My Perfect Gift",emoji:"🎁",color:TEAL,desc:"What kind of gifts make me melt",time:"5 min",type:"choice",
    questions:[
-     {a:"Morning person",b:"Night owl"},{a:"Beach vacation",b:"Mountain getaway"},
-     {a:"Cook at home",b:"Restaurants"},{a:"Big parties",b:"Intimate dinners"}
+     {q:"The gift that would make me happiest is...",opts:[{t:"Handwritten love letter",k:"letter"},{t:"Something handmade",k:"handmade"},{t:"Experience together (class/trip)",k:"experience"},{t:"Jewelry or meaningful item",k:"jewelry"},{t:"My favorite flowers or treat",k:"flowers"}]}
+   ],
+   keys:{letter:{n:"Words Person"},handmade:{n:"Thoughtful Maker"},experience:{n:"Memory Maker"},jewelry:{n:"Sentimental"},flowers:{n:"Simple Romantic"}}
+  },
+
+  {id:"dream-date",title:"Dream Date Night",emoji:"🌙",color:"#c47a65",desc:"Build our perfect evening",time:"7 min",type:"choice",
+   questions:[
+     {q:"Our ideal date night starts with...",opts:[{t:"Cooking together",k:"cook"},{t:"Dressing up and going out",k:"out"},{t:"Staying in with candles",k:"in"}]},
+     {q:"Ending the night with...",opts:[{t:"Stargazing",k:"stars"},{t:"Deep conversation",k:"talk"},{t:"Cuddling and movie",k:"cuddle"}]}
    ]
   },
-  // Hard Questions (open)
-  {id:"hardq",title:"The Hard Questions",emoji:"🩺",color:"#c47a65",desc:"Deep conversations",time:"open",type:"open",
-   questions:[{q:"What are you most afraid I'll discover about you?"}]
+
+  // This or That
+  {id:"this-or-that",title:"This or That",emoji:"🎲",color:GOLD,desc:"Fun & revealing",time:"5 min",type:"this-or-that",
+   questions:[
+     {a:"Morning person",b:"Night owl"},{a:"Beach",b:"Mountains"},{a:"Cook at home",b:"Restaurants"},
+     {a:"Deep talks",b:"Silly banter"},{a:"Spontaneous",b:"Planned"}
+   ]
   }
 ];
 
@@ -109,7 +113,7 @@ export default function Us() {
     const na = {...answers, [currentStep]: val};
     setAnswers(na);
     if (currentStep < (activeQuiz?.questions?.length || 0) - 1) setCurrentStep(s => s+1);
-    else { alert("Quiz completed! Amazing work together ❤️"); setActiveQuiz(null); }
+    else { alert("Quiz completed! Share your answers with each other ❤️"); setActiveQuiz(null); }
   };
 
   return (
@@ -149,11 +153,12 @@ export default function Us() {
 
         {nav === "quiz" && !activeQuiz && (
           <div>
-            <h2 style={{fontSize:28,marginBottom:20}}>Quiz Studio</h2>
+            <h2 style={{fontSize:28,marginBottom:20}}>Fun Quizzes</h2>
             {QZ.map(q => (
               <button key={q.id} onClick={()=>startQuiz(q)} style={{width:"100%",padding:20,background:CARD,borderRadius:20,marginBottom:12,textAlign:"left",border:`1px solid ${BDR}`}}>
                 <span style={{fontSize:32,marginRight:16}}>{q.emoji}</span>
-                <strong style={{fontSize:19}}>{q.title}</strong>
+                <strong style={{fontSize:19}}>{q.title}</strong><br/>
+                <small style={{opacity:0.7}}>{q.desc}</small>
               </button>
             ))}
           </div>
@@ -182,7 +187,7 @@ export default function Us() {
         {nav === "rescue" && (
           <div>
             <h2 style={{fontSize:28}}>Dr. Rescue</h2>
-            <button onClick={()=>{const t=prompt("Topic?");if(t){alert("Case opened! Dr. Rescue will help.");}}} style={{padding:20,background:CARD,borderRadius:20,width:"100%",marginTop:20}}>Open New Case</button>
+            <button onClick={()=>{const t=prompt("Topic?");if(t){alert("Case opened!");}}} style={{padding:20,background:CARD,borderRadius:20,width:"100%",marginTop:20}}>Open New Case</button>
           </div>
         )}
       </div>

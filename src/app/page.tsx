@@ -302,9 +302,204 @@ export default function Us() {
             Start Your Love Story ✨
           </button>
 
-          <p style={{marginTop:24,fontSize:16,color:"#f0e8f0",opacity:0.7,zIndex:2}}>
-            100% Free • No Sign-up Required • Just You Two
+          <p style={{marginTop:24,fontSize:16,color:"#a8b5d4",fontWeight:500,zIndex:2}}>
+            🚀 Free Beta Access • Premium Launch Coming Soon
           </p>
+          <p style={{marginTop:8,fontSize:14,color:"#f0e8f0",opacity:0.7,zIndex:2}}>
+            Everything is free during beta • Future premium features in development
+          </p>
+
+          {/* Comprehensive Roadmap - ICO Style */}
+          <div style={{marginTop:60,zIndex:2,padding:"0 20px 40px"}}>
+            <div style={{textAlign:"center",marginBottom:40}}>
+              <div style={{
+                fontSize:32,
+                fontWeight:900,
+                background:"linear-gradient(45deg, #a8b5d4, #ff6b9d, #d4c4a8)",
+                backgroundClip:"text",
+                WebkitBackgroundClip:"text",
+                color:"transparent",
+                marginBottom:16
+              }}>ROADMAP</div>
+              <p style={{fontSize:18,color:"#f0e8f0",opacity:0.9}}>Building the future of relationship technology</p>
+            </div>
+
+            <div style={{display:"grid",gap:20,maxWidth:400,margin:"0 auto"}}>
+
+              {/* Phase 1 - Current Beta */}
+              <div style={{
+                background:"linear-gradient(135deg, rgba(168,181,212,0.15), rgba(168,181,212,0.08))",
+                padding:24,
+                borderRadius:16,
+                border:"2px solid #a8b5d4",
+                position:"relative"
+              }}>
+                <div style={{
+                  position:"absolute",
+                  top:-12,
+                  left:20,
+                  background:"#a8b5d4",
+                  color:"#070510",
+                  padding:"4px 12px",
+                  borderRadius:12,
+                  fontSize:12,
+                  fontWeight:700,
+                  textTransform:"uppercase"
+                }}>Phase 1 - Beta</div>
+                <div style={{fontSize:20,fontWeight:700,color:"#a8b5d4",marginBottom:12}}>Foundation & Core Features</div>
+                <div style={{color:"#f0e8f0",opacity:0.9,lineHeight:1.6}}>
+                  ✅ **Basic Quiz System** - Relationship compatibility testing<br/>
+                  ✅ **Coin Toss & Date Wheel** - Fun decision-making tools<br/>
+                  ✅ **Dr. Rescue** - Relationship counseling prompts<br/>
+                  ✅ **Cross-device Sync** - Basic data persistence<br/>
+                  🚧 **User Accounts** - Sign-up system in development<br/>
+                  🚧 **Advanced Analytics** - Compatibility insights
+                </div>
+                <div style={{
+                  marginTop:16,
+                  padding:"8px 16px",
+                  background:"linear-gradient(45deg, #a8b5d4, #d4c4a8)",
+                  borderRadius:20,
+                  fontSize:14,
+                  fontWeight:600,
+                  color:"#070510",
+                  display:"inline-block"
+                }}>CURRENT STATUS</div>
+              </div>
+
+              {/* Phase 2 - Q3 2026 */}
+              <div style={{
+                background:"linear-gradient(135deg, rgba(212,196,168,0.15), rgba(212,196,168,0.08))",
+                padding:24,
+                borderRadius:16,
+                border:"2px solid #d4c4a8",
+                position:"relative"
+              }}>
+                <div style={{
+                  position:"absolute",
+                  top:-12,
+                  left:20,
+                  background:"#d4c4a8",
+                  color:"#070510",
+                  padding:"4px 12px",
+                  borderRadius:12,
+                  fontSize:12,
+                  fontWeight:700,
+                  textTransform:"uppercase"
+                }}>Phase 2 - Q3 2026</div>
+                <div style={{fontSize:20,fontWeight:700,color:"#d4c4a8",marginBottom:12}}>Premium Features Launch</div>
+                <div style={{color:"#f0e8f0",opacity:0.9,lineHeight:1.6}}>
+                  🔄 **User Accounts & Profiles** - Secure sign-up system<br/>
+                  🔄 **Advanced Compatibility Reports** - Detailed relationship insights<br/>
+                  🔄 **Private Messaging** - In-app communication between partners<br/>
+                  🔄 **Shared Calendar** - Relationship milestone tracking<br/>
+                  🔄 **Premium Quiz Library** - 50+ specialized relationship tests<br/>
+                  🔄 **Mobile App Release** - Native iOS/Android apps
+                </div>
+                <div style={{
+                  marginTop:16,
+                  padding:"8px 16px",
+                  background:"linear-gradient(45deg, #d4c4a8, #ff6b9d)",
+                  borderRadius:20,
+                  fontSize:14,
+                  fontWeight:600,
+                  color:"#070510",
+                  display:"inline-block"
+                }}>COMING SOON</div>
+              </div>
+
+              {/* Phase 3 - Q1 2027 */}
+              <div style={{
+                background:"linear-gradient(135deg, rgba(255,107,157,0.15), rgba(255,107,157,0.08))",
+                padding:24,
+                borderRadius:16,
+                border:"2px solid #ff6b9d",
+                position:"relative"
+              }}>
+                <div style={{
+                  position:"absolute",
+                  top:-12,
+                  left:20,
+                  background:"#ff6b9d",
+                  color:"#070510",
+                  padding:"4px 12px",
+                  borderRadius:12,
+                  fontSize:12,
+                  fontWeight:700,
+                  textTransform:"uppercase"
+                }}>Phase 3 - Q1 2027</div>
+                <div style={{fontSize:20,fontWeight:700,color:"#ff6b9d",marginBottom:12}}>AI-Powered Relationships</div>
+                <div style={{color:"#f0e8f0",opacity:0.9,lineHeight:1.6}}>
+                  🤖 **AI Relationship Coach** - Personalized advice & conflict resolution<br/>
+                  📊 **Predictive Analytics** - Relationship health forecasting<br/>
+                  🎯 **Custom Growth Plans** - Tailored improvement strategies<br/>
+                  👥 **Community Features** - Verified couples network<br/>
+                  📱 **Wearable Integration** - Mood & activity tracking<br/>
+                  🌍 **Multi-language Support** - Global relationship tools
+                </div>
+                <div style={{
+                  marginTop:16,
+                  padding:"8px 16px",
+                  background:"linear-gradient(45deg, #ff6b9d, #a8b5d4)",
+                  borderRadius:20,
+                  fontSize:14,
+                  fontWeight:600,
+                  color:"#070510",
+                  display:"inline-block"
+                }}>FUTURE VISION</div>
+              </div>
+
+              {/* Phase 4 - 2027+ */}
+              <div style={{
+                background:"linear-gradient(135deg, rgba(138,43,226,0.15), rgba(138,43,226,0.08))",
+                padding:24,
+                borderRadius:16,
+                border:"2px solid #8a2be2",
+                position:"relative"
+              }}>
+                <div style={{
+                  position:"absolute",
+                  top:-12,
+                  left:20,
+                  background:"#8a2be2",
+                  color:"white",
+                  padding:"4px 12px",
+                  borderRadius:12,
+                  fontSize:12,
+                  fontWeight:700,
+                  textTransform:"uppercase"
+                }}>Phase 4 - 2027+</div>
+                <div style={{fontSize:20,fontWeight:700,color:"#8a2be2",marginBottom:12}}>Relationship Revolution</div>
+                <div style={{color:"#f0e8f0",opacity:0.9,lineHeight:1.6}}>
+                  🧬 **Biometric Integration** - Heart rate & stress correlation<br/>
+                  🎭 **Virtual Reality Dates** - Immersive shared experiences<br/>
+                  🧠 **Neural Feedback** - Brainwave relationship insights<br/>
+                  🌐 **Global Relationship Network** - Worldwide couples platform<br/>
+                  ⚡ **Real-time Sync** - Instant partner connection anywhere<br/>
+                  💎 **Ultimate Premium** - $9.99/month enterprise features
+                </div>
+                <div style={{
+                  marginTop:16,
+                  padding:"8px 16px",
+                  background:"linear-gradient(45deg, #8a2be2, #ff6b9d)",
+                  borderRadius:20,
+                  fontSize:14,
+                  fontWeight:600,
+                  color:"white",
+                  display:"inline-block"
+                }}>ULTIMATE GOAL</div>
+              </div>
+            </div>
+
+            <div style={{textAlign:"center",marginTop:40}}>
+              <p style={{fontSize:16,color:"#f0e8f0",opacity:0.8,marginBottom:8}}>
+                🚀 Join us on this journey to revolutionize relationships
+              </p>
+              <p style={{fontSize:14,color:"#f0e8f0",opacity:0.6}}>
+                Your feedback during beta helps shape the future of digital relationships
+              </p>
+            </div>
+          </div>
         </div>
       )}
 
